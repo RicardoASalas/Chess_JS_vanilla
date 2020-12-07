@@ -6,14 +6,14 @@ import { createCastle} from './castle/Castle.js'
 import { createPawn} from './pawn/Pawn.js'
 
 
-const createPiece = (name, color, originCoords) => {
+const createPiece = (name, color, originCoords, numPiece) => {
     const pieces = {
-        queen: createQueen(color, originCoords),
-        king: createKing(color, originCoords),
-        bishop: createBishop(color, originCoords),
-        knight: createKnight(color, originCoords),
-        castle: createCastle(color, originCoords),
-        pawn: createPawn(color, originCoords),
+        queen: createQueen(color, originCoords, numPiece),
+        king: createKing(color, originCoords, numPiece),
+        bishop: createBishop(color, originCoords, numPiece),
+        knight: createKnight(color, originCoords, numPiece),
+        castle: createCastle(color, originCoords, numPiece),
+        pawn: createPawn(color, originCoords, numPiece),
     }
 
     return pieces[name];
