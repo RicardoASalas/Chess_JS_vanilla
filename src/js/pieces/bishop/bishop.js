@@ -3,7 +3,7 @@ import Piece from '../Piece.js';
 class Bishop extends Piece {
     #type = 'bishop';
     #limitCells = 7;
-    #moves = ["x"];
+    #moves = 'x';
     constructor(color, originCoords) {
         super()
 

@@ -3,7 +3,7 @@ import Piece from '../Piece.js';
 class Pawn extends Piece {
     #type = 'pawn';
     #limitCells = 2;
-    #moves = ["|"];
+    #moves = "|";
 
     constructor(color, originCoords) {
         super()

@@ -3,7 +3,7 @@ import Piece from '../Piece.js';
 class King extends Piece {
     #type = 'king';
     #limitCells = 1;
-    #moves = ["+"];
+    #moves = '+';
 
     constructor(color, originCoords) {
         super()
@@ -18,21 +18,7 @@ class King extends Piece {
 }
 
 const createKing = (pieceColor, orCoords) => {
-    const {
-        type,
-        moves,
-        limitCells,
-        color,
-        originCoords
-    } = new King(pieceColor, orCoords);
-
-    return  {
-        type,
-        moves,
-        limitCells,
-        color,
-        originCoords,
-    }
+    return new King(pieceColor, orCoords);
 }
 
 export { createKing };

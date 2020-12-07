@@ -3,7 +3,7 @@ import Piece from '../Piece.js';
 class Castle extends Piece {
     #type = 'castle';
     #limitCells = 7;
-    #moves = ["+"];
+    #moves = '+';
     constructor(color, originCoords) {
         super()
 

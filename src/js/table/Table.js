@@ -25,7 +25,7 @@ class Table {
         }
     }
 
-    setCellState(piece, coords) {;
+    setCellState(piece, coords) {
         const x = coords[0];
         const y = coords[1];
 

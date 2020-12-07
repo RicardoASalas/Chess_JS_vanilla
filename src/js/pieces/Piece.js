@@ -12,8 +12,15 @@ class Piece {
         this.currentCoords = coords;
     }
 
-    getCurrentCoords() {
-        return this.currentCoords;
+    getPieceInfo() {
+        return {
+            type: this.type,
+            moves: this.moves,
+            limitCells: this.limitCells,
+            color: this.color,
+            originCoords: this.originCoords,
+            currentCoords: this.currentCoords,
+        }
     }
 }
 

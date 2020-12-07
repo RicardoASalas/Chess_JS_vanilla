@@ -3,7 +3,7 @@ import Piece from '../Piece.js';
 class Knight extends Piece {
     #type = 'knight';
     #limitCells = 3;
-    #moves = ["L"];
+    #moves = 'L';
 
     constructor(color, originCoords) {
         super()
