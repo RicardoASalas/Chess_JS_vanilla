@@ -17,11 +17,11 @@ const actions = {
                 for (let i = 0; i < numPieces; i++) {
                     const orCoords = originCoords[color].shift();
                     const completeName = name + (i + 1);
-                    piecesPack[completeName] = createPiece(name, color, orCoords);
+                    piecesPack[completeName] = createPiece(name, color, orCoords, completeName);
                 }
             } else {
                 const orCoords = originCoords[color].shift();
-                piecesPack[name] = createPiece(name, color, orCoords);
+                piecesPack[name] = createPiece(name, color, orCoords, name);
             }
         })
         const numPiecesPack = Object.keys(piecesPack).length;
