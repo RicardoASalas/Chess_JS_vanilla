@@ -4,7 +4,7 @@ class Bishop extends Piece {
     #type = 'bishop';
     #limitCells = 7;
     #moves = 'x';
-    constructor(color, originCoords) {
+    constructor(color, originCoords, numPiece) {
         super()
 
         this.type = this.#type;
@@ -13,25 +13,12 @@ class Bishop extends Piece {
         this.moves =  this.#moves;
         this.originCoords = originCoords;
         this.currentCoords = originCoords;
+        this.numPiece = color + numPiece;
     }
 }
 
-const createBishop = (pieceColor, orCoords) => {
-    const {
-        type,
-        moves,
-        limitCells,
-        color,
-        originCoords
-    } = new Bishop(pieceColor, orCoords);
-
-    return  {
-        type,
-        moves,
-        limitCells,
-        color,
-        originCoords
-    }
+const createBishop = (pieceColor, orCoords, numPiece) => {
+    return new Bishop(pieceColor, orCoords, numPiece);
 }
 
 export { createBishop };

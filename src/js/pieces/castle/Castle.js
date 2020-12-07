@@ -4,7 +4,7 @@ class Castle extends Piece {
     #type = 'castle';
     #limitCells = 7;
     #moves = '+';
-    constructor(color, originCoords) {
+    constructor(color, originCoords, numPiece) {
         super()
 
         this.type = this.#type;
@@ -13,25 +13,12 @@ class Castle extends Piece {
         this.moves =  this.#moves;
         this.originCoords = originCoords;
         this.currentCoords = originCoords;
+        this.numPiece = color + numPiece;
     }
 }
 
-const createCastle = (pieceColor, orCoords) => {
-    const {
-        type,
-        moves,
-        limitCells,
-        color,
-        originCoords
-    } = new Castle(pieceColor, orCoords);
-
-    return  {
-        type,
-        moves,
-        limitCells,
-        color, 
-        originCoords
-    }
+const createCastle = (pieceColor, orCoords, numPiece) => {
+    return new Castle(pieceColor, orCoords, numPiece);
 }
 
 export { createCastle };

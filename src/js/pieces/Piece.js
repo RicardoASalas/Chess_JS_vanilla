@@ -1,11 +1,12 @@
 class Piece {
-    constructor(type, moves, limitCells, color, originCoords) {
+    constructor(type, moves, limitCells, color, originCoords, numPiece) {
         this.type = type;
         this.moves = moves;
         this.limitCells = limitCells;
         this.color = color;
         this.originCoords = originCoords;
         this.currentCoords = originCoords;
+        this.numPiece = numPiece;
     }
 
     setCurrentCoords(coords) {
@@ -20,6 +21,7 @@ class Piece {
             color: this.color,
             originCoords: this.originCoords,
             currentCoords: this.currentCoords,
+            numPiece: this.numPiece,
         }
     }
 }

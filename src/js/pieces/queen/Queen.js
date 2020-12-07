@@ -5,7 +5,7 @@ class Queen extends Piece {
     #limitCells = 7;
     #moves = '*';
 
-    constructor(color, originCoords) {
+    constructor(color, originCoords, numPiece) {
         super()
 
         this.type = this.#type;
@@ -14,11 +14,12 @@ class Queen extends Piece {
         this.moves =  this.#moves;
         this.originCoords = originCoords;
         this.currentCoords = originCoords;
+        this.numPiece = color + numPiece;
     }
 }
 
-const createQueen = (pieceColor, orCoords) => {
-    return new Queen(pieceColor, orCoords);
+const createQueen = (pieceColor, orCoords, numPiece) => {
+    return new Queen(pieceColor, orCoords, numPiece);
 }
 
 export { createQueen };

@@ -5,7 +5,7 @@ class Pawn extends Piece {
     #limitCells = 2;
     #moves = "|";
 
-    constructor(color, originCoords) {
+    constructor(color, originCoords, numPiece) {
         super()
 
         this.type = this.#type;
@@ -14,6 +14,7 @@ class Pawn extends Piece {
         this.moves =  this.#moves;
         this.originCoords = originCoords;
         this.currentCoords = originCoords;
+        this.numPiece = color + numPiece;
     }
 
     setLimitCells(limit) {
@@ -21,22 +22,8 @@ class Pawn extends Piece {
     }
 }
 
-const createPawn = (pieceColor, orCoords) => {
-    const {
-        type,
-        moves,
-        limitCells,
-        color,
-        originCoords,
-    } = new Pawn(pieceColor, orCoords);
-
-    return  {
-        type,
-        moves,
-        limitCells,
-        color,
-        originCoords,
-    }
+const createPawn = (pieceColor, orCoords, numPiece) => {
+    return new Pawn(pieceColor, orCoords, numPiece);
 }
 
 export { createPawn };

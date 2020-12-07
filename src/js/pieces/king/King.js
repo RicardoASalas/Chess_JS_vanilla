@@ -3,9 +3,9 @@ import Piece from '../Piece.js';
 class King extends Piece {
     #type = 'king';
     #limitCells = 1;
-    #moves = '+';
+    #moves = '*';
 
-    constructor(color, originCoords) {
+    constructor(color, originCoords, numPiece) {
         super()
 
         this.type = this.#type;
@@ -14,11 +14,12 @@ class King extends Piece {
         this.moves =  this.#moves;
         this.originCoords = originCoords;
         this.currentCoords = originCoords;
+        this.numPiece = color + numPiece;
     }
 }
 
-const createKing = (pieceColor, orCoords) => {
-    return new King(pieceColor, orCoords);
+const createKing = (pieceColor, orCoords, numPiece) => {
+    return new King(pieceColor, orCoords, numPiece);
 }
 
 export { createKing };
