@@ -4,23 +4,28 @@ import { moves } from './moves.js'
 
 const actions = {
 
+    /* creates two set of pieces, white and black */
     createPieces: (color) => {
         const pieces = piecesInfo;
     
         const piecesPack = {};
         const totalPieces = 16;
-    
+        
         pieces.map((piece) => {
             const { name, numPieces, originCoords } = piece;
-    
+            // clone object originCoords to avoid change original data
+            let cloneOriginCoords = JSON.parse(JSON.stringify(originCoords[color]))
+           
             if(numPieces > 1) {
                 for (let i = 0; i < numPieces; i++) {
-                    const orCoords = originCoords[color].shift();
+                    /* removes initial coords from array as it must be unique 
+                    for each piece */
+                    const orCoords = cloneOriginCoords.shift();
                     const completeName = name + (i + 1);
                     piecesPack[completeName] = createPiece(name, color, orCoords, completeName);
                 }
             } else {
-                const orCoords = originCoords[color].shift();
+                const orCoords = cloneOriginCoords.shift();
                 piecesPack[name] = createPiece(name, color, orCoords, name);
             }
         })
@@ -35,8 +40,9 @@ const actions = {
         return piecesPack;
     },
 
+    /* places pieces on their initial positions */
     setPieces: (table, pieces) => {
-        const  { blackPieces, whitePieces } = pieces;
+        const  { black: blackPieces, white: whitePieces } = pieces;
        
         for (const property in blackPieces) {
             const coords = blackPieces[property]['originCoords'];
