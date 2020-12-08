@@ -59,7 +59,6 @@ const actions = {
 
 /* renders table html code due to a tableState */
 window.renderTable = (tableState) => {
-    console.log(tableState);
     console.log('renderizando')
     let image;
     let cells = '';
@@ -70,8 +69,7 @@ window.renderTable = (tableState) => {
             const color = tableState[j][i].color;
             let state = tableState[j][i].state;
             const coords = tableState[j][i].coords;
-            // console.log(state);
-            // console.log(color);
+           
             if ( color === 'white') {
                 image = "whiteSquare.png";
             } else if (color === 'black') {
@@ -172,10 +170,10 @@ window.checkMoves = (options) => {
             if (destX !== currX) return currCoords
 
             if (straigthDist > limit) return currCoords;
-
-            if(orgX === 6 && orgX < destX) return currCoords;
+      
+            if(orgY === 6 && currY < destY) return currCoords;
             
-            if(orgX === 1 && orgX > destX) return currCoords;
+            if(orgY === 1 && currY > destY) return currCoords;
     
             return destCoords;
 
@@ -190,11 +188,16 @@ window.checkMoves = (options) => {
 
         case 'L':
             if (destX === currX || destY === currY) return currCoords;
-            //if (xDif + yDif > limit) return currCoords;
-    
-            if((xDif !== 2 && yDif !== 1) || (xDif !== 1 && yDif !== 2)) return currCoords
-
-            if (yDif/xDif !== 1 && yDif/xDif !== -1) return currCoords
+          
+            if (
+                yDif/xDif !== 2
+                &&
+                yDif/xDif !== -2
+                &&
+                yDif/xDif !== 0.5
+                &&
+                yDif/xDif !== -0.5
+                ) return currCoords
     
             return destCoords;
     }
