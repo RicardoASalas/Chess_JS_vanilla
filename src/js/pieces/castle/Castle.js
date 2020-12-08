@@ -4,6 +4,7 @@ class Castle extends Piece {
     #type = 'castle';
     #limitCells = 7;
     #moves = '+';
+    
     constructor(color, originCoords, numPiece) {
         super()
 

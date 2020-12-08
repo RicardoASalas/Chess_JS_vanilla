@@ -4,6 +4,7 @@ class Bishop extends Piece {
     #type = 'bishop';
     #limitCells = 7;
     #moves = 'x';
+    
     constructor(color, originCoords, numPiece) {
         super()
 
