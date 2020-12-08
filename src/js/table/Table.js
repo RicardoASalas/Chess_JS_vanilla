@@ -17,6 +17,7 @@ class Table {
                 const cell = {
                     state: 'empy',
                     color,
+                    coords: [x,y]
                 }
 
                 this.#table[x][y] = cell;
