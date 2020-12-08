@@ -12,10 +12,10 @@ window.onDragStart = (event) => {
     .dataTransfer
     .setData('piece', piece);
 
-    event
-    .currentTarget
-    .style
-    .backgroundColor = 'yellow';
+    // event
+    // .currentTarget
+    // .style
+    // .backgroundColor = 'yellow';
 };
 
 /* prevents event from being droped on a non droppable container */
