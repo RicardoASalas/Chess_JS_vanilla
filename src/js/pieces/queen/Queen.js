@@ -14,7 +14,7 @@ class Queen extends Piece {
         this.moves =  this.#moves;
         this.originCoords = originCoords;
         this.currentCoords = originCoords;
-        this.numPiece = color + numPiece;
+        this.numPiece = numPiece;
     }
 }
 
