@@ -42,11 +42,8 @@ window.onDrop = (event) => {
         moves: piece.moves,
     }
 
-    console.log('previews position: '+options.currCoords);
-    console.log('new position: '+options.destCoords);
-
     const newCoords = checkMoves(options);
-
+    console.log('newCoords: '+newCoords)
 
     // const draggableElement = document.getElementById(id);
     // const dropzone = event.target;
@@ -82,8 +79,7 @@ window.checkMoves = (options) => {
             return destCoords;
        
         case '*':
-            if (destX !== currX && destY !== currY) {
-                console.log('es diagonal')    
+            if (destX !== currX && destY !== currY) {  
                 if (diagonalDist > limit) return currCoords;
 
                 if (yDif/xDif !== 1 && yDif/xDif !== -1) return currCoords
@@ -105,12 +101,7 @@ window.checkMoves = (options) => {
             return destCoords;
 
         case 'x':
-            console.log('soy alfil') 
-            console.log('x' + destX+'--'+currX)
-            console.log('y' +  destY+'--'+currY)
-            console.log(destX === currX || destY === currY)
             if (destX === currX || destY === currY) return currCoords;
-            console.log('esto tambien se ejecutas')
 
             if (diagonalDist > limit) return currCoords;
 
@@ -119,9 +110,12 @@ window.checkMoves = (options) => {
             return destCoords;
 
         case 'L':
-            if (xDif + yDif > limit) return currCoords;
+            if (destX === currX || destY === currY) return currCoords;
+            //if (xDif + yDif > limit) return currCoords;
     
             if((xDif !== 2 && yDif !== 1) || (xDif !== 1 && yDif !== 2)) return currCoords
+
+            if (yDif/xDif !== 1 && yDif/xDif !== -1) return currCoords
     
             return destCoords;
     }
