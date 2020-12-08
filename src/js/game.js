@@ -4,15 +4,15 @@ import { actions } from './actions/actions.js'
 const startGame = () => {
     console.log('Empieza el juego');
     const table = new Table();
+    const pieces = {}
     table.create();
     const tableState = table.getTableState();
-    const whitePieces = actions.createPieces('white');
-    const blackPieces = actions.createPieces('black');
-    actions.setPieces(table, { whitePieces, blackPieces});
-    _render(tableState);
-    localStorage.setItem('tableState', tableState);
-    localStorage.setItem('whitePieces', whitePieces);
-    localStorage.setItem('blackPieces', blackPieces)
+    pieces.white = actions.createPieces('white');
+    pieces.black = actions.createPieces('black');
+    actions.setPieces(table, pieces);
+    localStorage.setItem('tableState', JSON.stringify(tableState));
+    localStorage.setItem('pieces', JSON.stringify(pieces));
+    renderTable(tableState);
   
 
 
@@ -28,27 +28,29 @@ const startGame = () => {
     // console.log(table);
 }
     
-const _render = (tableState) => {
+const renderTable = (tableState) => {
     let image;
     let cells = '';
     let pieceImage;
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 7; i >= 0; i--) {
         for (let j = 0; j < 8; j++) {
-            const color = tableState[i][j].color;
-            let state = tableState[i][j].state;
-            const coords = [i, j]
+            const color = tableState[j][i].color;
+            let state = tableState[j][i].state;
+            const coords = [j, i]
+        
             if ( color === 'white') {
                 image = "whiteSquare.png";
             } else if (color === 'black') {
                 image = "blackSquare.png";
             }
-            
+
             let width;
             let height;
             let pieceColor;
             let draggable;
             let numPiece;
+
             if (state.type) {
                 pieceColor = state.color;
                 numPiece = state.numPiece;
@@ -86,4 +88,4 @@ const _render = (tableState) => {
 //     const cells = querySelectorAll('.dropzone')
 // }
 
-export { startGame };
+export { startGame, renderTable };
