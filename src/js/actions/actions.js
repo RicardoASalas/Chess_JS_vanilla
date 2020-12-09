@@ -71,9 +71,9 @@ window.renderTable = (tableState) => {
             const coords = tableState[j][i].coords;
            
             if ( color === 'white') {
-                image = "whiteSquare.png";
+                image = "blackSquare.jpg";
             } else if (color === 'black') {
-                image = "blackSquare.png";
+                image = "whiteSquare.jpg";
             }
 
             let width;
