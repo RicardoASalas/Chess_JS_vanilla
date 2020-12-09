@@ -86,7 +86,7 @@ window.renderTable = (tableState) => {
                 pieceColor = state.color;
                 pieceCode = pieceColor + state.numPiece;
                 state = state.type;
-                width = 25;
+                width = 30;
                 height = 60;
                 pieceImage =`/pieces/${state}${pieceColor}.png`;
                 draggable = "true";
