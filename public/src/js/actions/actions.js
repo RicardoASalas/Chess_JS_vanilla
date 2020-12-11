@@ -81,26 +81,26 @@ window.renderTable = (tableState) => {
             let pieceColor;
             let draggable;
             let pieceCode;
+            let pieceClass;
+            const cellClass = "emptyCell";
 
             if (state.type) {
                 pieceColor = state.color;
                 pieceCode = pieceColor + state.numPiece;
                 state = state.type;
-                width = 30;
-                height = 60;
                 pieceImage =`/pieces/${state}${pieceColor}.png`;
                 draggable = "true";
+                pieceClass = "piece"
             } else {
-                width = 65;
-                height = 65;
                 pieceImage = image;
                 draggable = "false";
+                pieceClass ="noPiece"
             }
 
             const cell = 
             `<span id="${coords}" class="cell dropzone" ondragover="onDragOver(event);" ondrop="onDrop(event);">
-                    <img id="${pieceCode}" ondragstart="onDragStart(event)"; class="piece draggable" draggable=${draggable} src="src/img/${pieceImage}" alt=${state} width="${width}" height="${height}">
-                    <img draggable="false" src="src/img/${image}" alt=${coords} width="65" height="65">
+                    <img id="${pieceCode}" ondragstart="onDragStart(event)"; class="${pieceClass} draggable" draggable=${draggable} src="src/img/${pieceImage}" alt=${state} width="${width}" height="${height}">
+                    <img class=${cellClass} draggable="false" src="src/img/${image}" alt=${coords} width="${width}" height="${height}">
             </span>`;
             cells = cells + cell;
         }
