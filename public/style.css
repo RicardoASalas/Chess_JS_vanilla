@@ -32,6 +32,8 @@ and (max-device-width : 480px) {
         grid-template-columns: auto auto auto auto auto auto auto auto;
         background-color: #610c04;
         padding: 0.5em;
+        width: 65;
+        height: 65;
     }
       
     .cell {
@@ -39,12 +41,11 @@ and (max-device-width : 480px) {
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 0px;
         text-align: center;
-       
     }
 
     .emptyCell {
-        width: 65em;
-        height: 65em;
+        width: 65;
+        height: 65;
     }
     
     .piece {
@@ -52,6 +53,9 @@ and (max-device-width : 480px) {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 30;
+        height: 60;
+
     }
 /* Styles */
 }
@@ -90,6 +94,8 @@ and (min-width : 321px) {
         grid-template-columns: auto auto auto auto auto auto auto auto;
         background-color: #610c04;
         padding: 0.5em;
+        width: 65;
+        height: 65;
     }
       
     .cell {
@@ -97,12 +103,11 @@ and (min-width : 321px) {
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 0px;
         text-align: center;
-       
     }
 
     .emptyCell {
-        width: 65em;
-        height: 65em;
+        width: 65;
+        height: 65;
     }
     
     .piece {
@@ -110,6 +115,9 @@ and (min-width : 321px) {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 30;
+        height: 60;
+
     }
 /* Styles */
 }
@@ -148,6 +156,8 @@ and (max-width : 320px) {
         grid-template-columns: auto auto auto auto auto auto auto auto;
         background-color: #610c04;
         padding: 0.5em;
+        width: 65;
+        height: 65;
     }
       
     .cell {
@@ -155,12 +165,11 @@ and (max-width : 320px) {
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 0px;
         text-align: center;
-       
     }
 
     .emptyCell {
-        width: 65em;
-        height: 65em;
+        width: 65;
+        height: 65;
     }
     
     .piece {
@@ -168,58 +177,9 @@ and (max-width : 320px) {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-    }
-    html, body {
-        height: 100vh;
-        text-align: center;
-        background-image: url("./src/img/backGround.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        overflow: hidden;
-    }
-    
-    #startGame {
-        top: 3em;
-        margin-top: 5em;
-        width: 5em;
-        height: 2em;
-        position: absolute;
-        margin-bottom: 3em;
-    }
-    
-    #chessTable {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .table {
-        display: inline-grid;
-        grid-template-columns: auto auto auto auto auto auto auto auto;
-        background-color: #610c04;
-        padding: 0.5em;
-    }
-      
-    .cell {
-        position: relative;
-        background-color: rgba(255, 255, 255, 0.8);
-        font-size: 0px;
-        text-align: center;
-       
-    }
+        width: 30;
+        height: 60;
 
-    .emptyCell {
-        width: 65em;
-        height: 65em;
-    }
-    
-    .piece {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
     }
 /* Styles */
 }
@@ -259,6 +219,8 @@ and (max-device-width : 1024px) {
         grid-template-columns: auto auto auto auto auto auto auto auto;
         background-color: #610c04;
         padding: 0.5em;
+        width: 65;
+        height: 65;
     }
       
     .cell {
@@ -266,12 +228,11 @@ and (max-device-width : 1024px) {
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 0px;
         text-align: center;
-       
     }
 
     .emptyCell {
-        width: 65em;
-        height: 65em;
+        width: 65;
+        height: 65;
     }
     
     .piece {
@@ -279,6 +240,9 @@ and (max-device-width : 1024px) {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 30;
+        height: 60;
+
     }
 /* Styles */
 }
@@ -319,6 +283,8 @@ and (orientation : landscape) {
         grid-template-columns: auto auto auto auto auto auto auto auto;
         background-color: #610c04;
         padding: 0.5em;
+        width: 65;
+        height: 65;
     }
       
     .cell {
@@ -326,12 +292,11 @@ and (orientation : landscape) {
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 0px;
         text-align: center;
-       
     }
 
     .emptyCell {
-        width: 65em;
-        height: 65em;
+        width: 65;
+        height: 65;
     }
     
     .piece {
@@ -339,6 +304,9 @@ and (orientation : landscape) {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 30;
+        height: 60;
+
     }
 /* Styles */
 }
@@ -379,6 +347,8 @@ and (orientation : portrait) {
         grid-template-columns: auto auto auto auto auto auto auto auto;
         background-color: #610c04;
         padding: 0.5em;
+        width: 65;
+        height: 65;
     }
       
     .cell {
@@ -386,12 +356,11 @@ and (orientation : portrait) {
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 0px;
         text-align: center;
-       
     }
 
     .emptyCell {
-        /* width: 65em;
-        height: 65em; */
+        width: 65;
+        height: 65;
     }
     
     .piece {
@@ -399,6 +368,9 @@ and (orientation : portrait) {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 30;
+        height: 60;
+
     }
 /* Styles */
 }
@@ -436,7 +408,7 @@ and (min-width : 1224px) {
         display: inline-grid;
         grid-template-columns: auto auto auto auto auto auto auto auto;
         background-color: #610c04;
-        padding: 0.5em;
+        padding: 10px;
     }
       
     .cell {
@@ -444,12 +416,20 @@ and (min-width : 1224px) {
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 0px;
         text-align: center;
-       
+    }
+    
+    .emptyCell {
+        width: 65px;
+        height: 65px;
     }
 
-    .emptyCell {
-        width: 65em;
-        height: 65em;
+    .noPiece {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 65px;
+        height: 65px;
     }
     
     .piece {
@@ -457,5 +437,7 @@ and (min-width : 1224px) {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 30px;
+        height: 60px;
     }
 }
