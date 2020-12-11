@@ -1,0 +1,461 @@
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    html, body {
+        height: 100vh;
+        text-align: center;
+        background-image: url("./src/img/backGround.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+    
+    #startGame {
+        top: 3em;
+        margin-top: 5em;
+        width: 5em;
+        height: 2em;
+        position: absolute;
+        margin-bottom: 3em;
+    }
+    
+    #chessTable {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .table {
+        display: inline-grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        background-color: #610c04;
+        padding: 0.5em;
+    }
+      
+    .cell {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 0px;
+        text-align: center;
+       
+    }
+
+    .emptyCell {
+        width: 65em;
+        height: 65em;
+    }
+    
+    .piece {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+/* Styles */
+}
+
+/* Smartphones (landscape) ———– */
+@media only screen
+and (min-width : 321px) {
+    html, body {
+        height: 100vh;
+        text-align: center;
+        background-image: url("./src/img/backGround.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+    
+    #startGame {
+        top: 3em;
+        margin-top: 5em;
+        width: 5em;
+        height: 2em;
+        position: absolute;
+        margin-bottom: 3em;
+    }
+    
+    #chessTable {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .table {
+        display: inline-grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        background-color: #610c04;
+        padding: 0.5em;
+    }
+      
+    .cell {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 0px;
+        text-align: center;
+       
+    }
+
+    .emptyCell {
+        width: 65em;
+        height: 65em;
+    }
+    
+    .piece {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+/* Styles */
+}
+
+/* Smartphones (portrait) ———– */
+@media only screen
+and (max-width : 320px) {
+    html, body {
+        height: 100vh;
+        text-align: center;
+        background-image: url("./src/img/backGround.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+    
+    #startGame {
+        top: 3em;
+        margin-top: 5em;
+        width: 5em;
+        height: 2em;
+        position: absolute;
+        margin-bottom: 3em;
+    }
+    
+    #chessTable {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .table {
+        display: inline-grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        background-color: #610c04;
+        padding: 0.5em;
+    }
+      
+    .cell {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 0px;
+        text-align: center;
+       
+    }
+
+    .emptyCell {
+        width: 65em;
+        height: 65em;
+    }
+    
+    .piece {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    html, body {
+        height: 100vh;
+        text-align: center;
+        background-image: url("./src/img/backGround.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+    
+    #startGame {
+        top: 3em;
+        margin-top: 5em;
+        width: 5em;
+        height: 2em;
+        position: absolute;
+        margin-bottom: 3em;
+    }
+    
+    #chessTable {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .table {
+        display: inline-grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        background-color: #610c04;
+        padding: 0.5em;
+    }
+      
+    .cell {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 0px;
+        text-align: center;
+       
+    }
+
+    .emptyCell {
+        width: 65em;
+        height: 65em;
+    }
+    
+    .piece {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ———– */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+    html, body {
+        height: 100vh;
+        text-align: center;
+        background-image: url("./src/img/backGround.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+    
+    #startGame {
+        top: 3em;
+        margin-top: 5em;
+        width: 5em;
+        height: 2em;
+        position: absolute;
+        margin-bottom: 3em;
+    }
+    
+    #chessTable {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .table {
+        display: inline-grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        background-color: #610c04;
+        padding: 0.5em;
+    }
+      
+    .cell {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 0px;
+        text-align: center;
+       
+    }
+
+    .emptyCell {
+        width: 65em;
+        height: 65em;
+    }
+    
+    .piece {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+/* Styles */
+}
+
+/* iPads (landscape) ———– */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+    html, body {
+        height: 100vh;
+        text-align: center;
+        background-image: url("./src/img/backGround.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+    
+    #startGame {
+        top: 3em;
+        margin-top: 5em;
+        width: 5em;
+        height: 2em;
+        position: absolute;
+        margin-bottom: 3em;
+    }
+    
+    #chessTable {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .table {
+        display: inline-grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        background-color: #610c04;
+        padding: 0.5em;
+    }
+      
+    .cell {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 0px;
+        text-align: center;
+       
+    }
+
+    .emptyCell {
+        width: 65em;
+        height: 65em;
+    }
+    
+    .piece {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+/* Styles */
+}
+
+/* iPads (portrait) ———– */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+    html, body {
+        height: 100vh;
+        text-align: center;
+        background-image: url("./src/img/backGround.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+    
+    #startGame {
+        top: 3em;
+        margin-top: 5em;
+        width: 5em;
+        height: 2em;
+        position: absolute;
+        margin-bottom: 3em;
+    }
+    
+    #chessTable {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .table {
+        display: inline-grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        background-color: #610c04;
+        padding: 0.5em;
+    }
+      
+    .cell {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 0px;
+        text-align: center;
+       
+    }
+
+    .emptyCell {
+        /* width: 65em;
+        height: 65em; */
+    }
+    
+    .piece {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+/* Styles */
+}
+
+/* Desktops and laptops ———– */
+@media only screen
+and (min-width : 1224px) {
+    html, body {
+        height: 100vh;
+        text-align: center;
+        background-image: url("./src/img/backGround.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+    }
+    
+    #startGame {
+        top: 3em;
+        margin-top: 5em;
+        width: 5em;
+        height: 2em;
+        position: absolute;
+        margin-bottom: 3em;
+    }
+    
+    #chessTable {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .table {
+        display: inline-grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        background-color: #610c04;
+        padding: 0.5em;
+    }
+      
+    .cell {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 0px;
+        text-align: center;
+       
+    }
+
+    .emptyCell {
+        width: 65em;
+        height: 65em;
+    }
+    
+    .piece {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
