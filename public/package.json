@@ -1,0 +1,19 @@
+{
+  "name": "chess_js",
+  "version": "1.0.0",
+  "description": "chess game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RicardoASalas/Chess_JS_vanilla.git"
+  },
+  "author": "Ricardo Salas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RicardoASalas/Chess_JS_vanilla/issues"
+  },
+  "homepage": "https://github.com/RicardoASalas/Chess_JS_vanilla#readme"
+}
