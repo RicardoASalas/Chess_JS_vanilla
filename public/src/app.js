@@ -7,4 +7,5 @@ const initializeGame = () => {
         .onclick = () => startGame();
 }
 
+
 document.addEventListener('DOMContentLoaded', initializeGame);
