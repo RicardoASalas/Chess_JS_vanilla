@@ -70,3 +70,29 @@ window.onDrop = (event) => {
     // .clearData();
 };
 
+window.ontouchstart = (event) => {ç
+    console.log("entra aqui")
+    const id = event.target.id;
+    const color = id.search('white') > -1 ? 'white' : 'black';
+    const pieceName = id.replace(color,'');
+    let pieces = localStorage.getItem('pieces');
+    pieces = JSON.parse(pieces);
+    let piece = pieces[color][pieceName];
+    piece = JSON.stringify(piece);
+
+    event
+    .dataTransfer
+    .setData('piece', piece);
+
+    // event
+    // .currentTarget
+    // .style
+    // .backgroundColor = 'yellow';
+}
+
+/* prevents event from being droped on a non droppable container */
+window.ontouchmove = (event) => {
+    console.log("entra aqui")
+    event.preventDefault();
+};
+
