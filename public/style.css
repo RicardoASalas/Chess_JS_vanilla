@@ -11,16 +11,22 @@ and (min-width : 321px) {
         height: 100vh;
         width: 100vw;
         text-align: center;
-        background-image: url("./src/img/background.jpg");
+        background-image: url("./src/img/backGround.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         margin: 0px;
         overflow: hidden;
+        position: fixed;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
+    }
+
+    #title {
+        width: 150px;
+        height: 75px;
     }
 
     #startGameContainer {
@@ -125,13 +131,18 @@ and (min-width : 1224px) {
         justify-content: center;
         flex-direction: column;
     }
+
+    #title {
+        width: 150px;
+        height: 75px;
+    }
     
     #startGame {
         top: 10px;
-        margin-top: 10px;
+        margin-top: 2px;
         width: 100px;
         height: 30px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
     
     #chessTable {
@@ -155,8 +166,8 @@ and (min-width : 1224px) {
     }
     
     .emptyCell {
-        width: 65px;
-        height: 65px;
+        width: 60px;
+        height: 60px;
     }
 
     .noPiece {
@@ -164,8 +175,8 @@ and (min-width : 1224px) {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 65px;
-        height: 65px;
+        width: 60px;
+        height: 60px;
     }
     
     .piece {
@@ -174,6 +185,6 @@ and (min-width : 1224px) {
         left: 50%;
         transform: translate(-50%, -50%);
         width: 30px;
-        height: 60px;
+        height: 55px;
     }
 }
