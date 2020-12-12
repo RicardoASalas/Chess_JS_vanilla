@@ -70,7 +70,7 @@ window.onDrop = (event) => {
     // .clearData();
 };
 
-window.ontouchstart = (event) => {ç
+window.ontouchstart = (event) => {
     console.log("entra aqui")
     const id = event.target.id;
     const color = id.search('white') > -1 ? 'white' : 'black';
