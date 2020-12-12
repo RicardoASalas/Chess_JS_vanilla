@@ -159,7 +159,7 @@ and (min-width : 1224px) {
     }
       
     .cell {
-        position: relative;
+        /* position: relative; */
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 0px;
         text-align: center;
@@ -186,5 +186,12 @@ and (min-width : 1224px) {
         transform: translate(-50%, -50%);
         width: 30px;
         height: 55px;
+        padding-bottom: 5px;
+    }
+
+    .piece:hover {
+        padding-bottom: 5px;
+        width: 50px;
+        height: 75px;
     }
 }
