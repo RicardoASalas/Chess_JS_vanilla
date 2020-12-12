@@ -17,6 +17,5 @@
   },
   "homepage": "https://github.com/RicardoASalas/Chess_JS_vanilla#readme",
   "dependencies": {
-    "drag-drop-touch": "^1.3.1"
   }
 }
