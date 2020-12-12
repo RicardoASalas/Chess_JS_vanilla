@@ -99,8 +99,8 @@ window.renderTable = (tableState) => {
 
             const cell = 
             `<span id="${coords}" class="cell dropzone" ondragover="onDragOver(event);" ondrop="onDrop(event);">
-                    <img id="${pieceCode}" ondragstart="onDragStart(event)"; class="${pieceClass} draggable" draggable=${draggable} src="src/img/${pieceImage}" alt=${state} width="${width}" height="${height}">
                     <img class=${cellClass} draggable="false" src="src/img/${image}" alt=${coords} width="${width}" height="${height}">
+                    <img id="${pieceCode}" ondragstart="onDragStart(event)"; class="${pieceClass} draggable" draggable=${draggable} src="src/img/${pieceImage}" alt=${state} width="${width}" height="${height}">
             </span>`;
             cells = cells + cell;
         }
