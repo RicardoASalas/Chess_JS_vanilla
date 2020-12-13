@@ -41,17 +41,11 @@ const actions = {
 
     /* places pieces on their initial positions */
     setPieces: (table, pieces) => {
-        const  { black: blackPieces, white: whitePieces } = pieces;
-       
-        for (const property in blackPieces) {
-            const coords = blackPieces[property]['originCoords'];
-            const piece = blackPieces[property];
-            table.setCellState(piece, coords)
-        }
-    
-        for (const property in whitePieces) {
-            const coords = whitePieces[property]['originCoords'];
-            const piece = whitePieces[property];
+        console.log(table)
+        console.log(pieces)
+        for (const property in pieces) {
+            const coords = pieces[property]['originCoords'];
+            const piece = pieces[property];
             table.setCellState(piece, coords)
         }
     },

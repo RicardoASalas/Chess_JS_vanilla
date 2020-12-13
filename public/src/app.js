@@ -15,14 +15,6 @@ import { startGame } from './js/game.js'
 
 const initializeGame = () => {
     firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-    console.log(database);
-
-    database.ref('game/'+'table').set({
-      username: 'hola',
-      email: 'hola',
-      profile_picture : 'hola'
-    });
     
     document
         .getElementById("startGame")
