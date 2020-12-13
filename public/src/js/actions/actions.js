@@ -41,11 +41,17 @@ const actions = {
 
     /* places pieces on their initial positions */
     setPieces: (table, pieces) => {
-        console.log(table)
-        console.log(pieces)
-        for (const property in pieces) {
-            const coords = pieces[property]['originCoords'];
-            const piece = pieces[property];
+        const  { black: blackPieces, white: whitePieces } = pieces;
+       
+        for (const property in blackPieces) {
+            const coords = blackPieces[property]['originCoords'];
+            const piece = blackPieces[property];
+            table.setCellState(piece, coords)
+        }
+    
+        for (const property in whitePieces) {
+            const coords = whitePieces[property]['originCoords'];
+            const piece = whitePieces[property];
             table.setCellState(piece, coords)
         }
     },
@@ -53,6 +59,7 @@ const actions = {
 
 /* renders table html code due to a tableState */
 window.renderTable = (tableState) => {
+    const userColor = JSON.parse(localStorage.getItem('userColor'));
     console.log('renderizando')
     let image;
     let cells = '';
@@ -77,13 +84,13 @@ window.renderTable = (tableState) => {
             let pieceCode;
             let pieceClass;
             const cellClass = "emptyCell";
-
+           
             if (state.type) {
                 pieceColor = state.color;
                 pieceCode = pieceColor + state.numPiece;
                 state = state.type;
-                pieceImage =`/pieces/${state}${pieceColor}.png`;
-                draggable = "true";
+                pieceImage =`pieces/${state}${pieceColor}.png`;
+                draggable =  pieceColor !== userColor ? "false" : "true";
                 pieceClass = "piece"
             } else {
                 pieceImage = image;

@@ -11,7 +11,7 @@ and (min-width : 321px) {
         height: 100vh;
         width: 100vw;
         text-align: center;
-        background-image: url("./src/img/backGround.jpg");
+        background-image: url("./src/img/backgroundold.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -141,7 +141,7 @@ and (min-width : 1224px) {
         height: 100vh;
         width: 100vw;
         text-align: center;
-        background-image: url("./src/img/backGround.jpg");
+        background-image: url("./src/img/background.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
