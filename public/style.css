@@ -29,15 +29,36 @@ and (min-width : 321px) {
         height: 75px;
     }
 
-    #startGameContainer {
+    #buttonsContainer, #checkbox {
         width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    #textInputContainer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #whiteCheckBox, #blackCheckBox {
+        top: 10px;
+        margin: 5px;
     }
     
-    #startGame {
+    #startGame, #finishGame {
         top: 10px;
-        width: 50px;
-        height: 20px;
-        margin-bottom: 5px;
+        margin: 5px;
+        width: 100px;
+        height: 30px;
+    }
+
+    .label {
+        color: white;
     }
     
     #chessTable {
@@ -136,13 +157,37 @@ and (min-width : 1224px) {
         width: 150px;
         height: 75px;
     }
-    
-    #startGame {
+
+    #buttonsContainer, #checkbox {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    #textInputContainer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #whiteCheckBox, #blackCheckBox {
         top: 10px;
-        margin-top: 2px;
+        margin: 5px;
+    }
+    
+    #startGame, #finishGame {
+        top: 10px;
+        margin: 5px;
         width: 100px;
         height: 30px;
-        margin-bottom: 5px;
+    }
+
+    .label {
+        color: white;
     }
     
     #chessTable {
