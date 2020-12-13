@@ -1,11 +1,14 @@
 /* event fires when mouse drags a draggable item */
 window.onDragStart = (event) => {
     const id = event.target.id;
-    const color = id.search('white') > -1 ? 'white' : 'black';
-    const pieceName = id.replace(color,'');
+    const database = firebase.database();
+    const gameName = localStorage.getItem("gameName");
+    const userColor = localStorage.getItem("userColor");
+
+    const pieceName = id.replace(userColor,'');
     let pieces = localStorage.getItem('pieces');
     pieces = JSON.parse(pieces);
-    let piece = pieces[color][pieceName];
+    let piece = pieces[userColor][pieceName];
     piece = JSON.stringify(piece);
 
     event
