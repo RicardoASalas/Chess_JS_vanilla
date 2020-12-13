@@ -24,60 +24,47 @@ const startGame = () => {
     const gameRef = database.ref(`/games/${gameName}/`)
 
     gameRef.once('value').then((snapshot) => {
-        const game = snapshot.val();
+        const game = snapshot.val() ? snapshot.val() : {};
 
-        if (
-                game &&
-                game.users &&
-                game.users[userColor] &&
-                game.users[userColor].username !== userName
-            ) {
-                alert('ERROR: No puedes unirte a este juego, está completo.')
-                return;
+        if (!game.users) game.users = {};
+
+
+        if (!game.users[userColor]){
+            game.users[userColor] = {};
+            game.users[userColor].username = userName;
+        } 
+
+        if (game.users[userColor].username !== userName) {
+            alert('ERROR: No puedes unirte a este juego, está completo.')
+            return;
         }
 
-        let pieces;
+        let pieces = {};
+        const colorPlayer2 =  whiteChecked ? 'black' : 'white';
         
-        if (
-                game &&
-                game.users &&
-                game.users[userColor] &&
-                game.users[userColor].pieces
-            ) {
-                pieces = game.users[userColor].pieces
-            } else {
-                pieces = actions.createPieces(userColor);
-            }
-        
-        let tableState;
+        if (!game.users[userColor].pieces) game.users[userColor].pieces = actions.createPieces(userColor);
 
-        if (!game || !game.table) {
-            console.log('Empieza el juego');
-            const table = new Table();
-            table.create();
-            actions.setPieces(table, pieces);
-            tableState = table.getTableState();
-        } else {
-            tableState = game.table;
-        }
+        if (game.users[colorPlayer2] && game.users[colorPlayer2].pieces) {
+            pieces[colorPlayer2] = game.users[colorPlayer2].pieces;
+        } 
+        
+        pieces[userColor] = game.users[userColor].pieces;
+        
+        console.log('Empieza el juego');
+        const table = new Table();
+        table.create();
+        actions.setPieces(table, pieces);
+        game.table = table.getTableState();
      
-        localStorage.setItem('table', JSON.stringify(tableState));
-        localStorage.setItem('pieces', JSON.stringify(pieces));
-        const newGame = {}
-        newGame.table = tableState;
-        const users = {}
-        users[userColor] = {
-            username: userName, 
-            pieces,
-        }
-        newGame.users = users;
+        localStorage.setItem('userName', JSON.stringify(userName));
+        localStorage.setItem('gameName', JSON.stringify(gameName));
+        localStorage.setItem('userColor', JSON.stringify(userColor))
 
-        gameRef.set(newGame);
+        gameRef.set(game);
     });
 
     gameRef.child('table').on('value', (snapshot) =>{
         const table = snapshot.val();
-        console.log(table);
         if (table) window.renderTable(table);
       });
 }   
