@@ -1,24 +1,10 @@
 /* event fires when mouse drags a draggable item */
 window.onDragStart = (event) => {
     const id = event.target.id;
-    const database = firebase.database();
-    const gameName = localStorage.getItem("gameName");
-    const userColor = localStorage.getItem("userColor");
-
-    const pieceName = id.replace(userColor,'');
-    let pieces = localStorage.getItem('pieces');
-    pieces = JSON.parse(pieces);
-    let piece = pieces[userColor][pieceName];
-    piece = JSON.stringify(piece);
-
+    
     event
     .dataTransfer
-    .setData('piece', piece);
-
-    // event
-    // .currentTarget
-    // .style
-    // .backgroundColor = 'yellow';
+    .setData('id', id);
 };
 
 /* prevents event from being droped on a non droppable container */
@@ -28,47 +14,68 @@ window.onDragOver = (event) => {
 
 /* event fires when mouse drops an item on a droppable container */
 window.onDrop = (event) => {
+    const database = firebase.database();
+    let gameName = localStorage.getItem("gameName");
+    gameName = JSON.parse(gameName)
+    let userColor = localStorage.getItem("userColor");
+    userColor = JSON.parse(userColor);
+
     let cellCoords = event.currentTarget.id;
     cellCoords = cellCoords.split(',');
     cellCoords[0] = Number(cellCoords[0]);
     cellCoords[1] = Number(cellCoords[1]);
-    let piece = event
+    
+    const id = event
     .dataTransfer
-    .getData('piece');
-    piece = JSON.parse(piece);
+    .getData('id');
+    const pieceName = id.replace(userColor,'');
+    const gameRef = database.ref(`/games/${gameName}/`);
+    let table;
 
-    const options = {
-        originCoords: piece.originCoords,
-        currCoords: piece.currentCoords,
-        destCoords: cellCoords,
-        limit: piece.limitCells,
-        moves: piece.moves,
-    }
+    gameRef.once('value').then((snapshot) => {
+        const game = snapshot.val();
 
-    const newCoords = checkMoves(options);
+        if (!game) return;
 
-    if(newCoords !== options.currCoords) {
-        let pieces = localStorage.getItem('pieces');
-        pieces = JSON.parse(pieces);
-        let table = localStorage.getItem('table');
-        table = JSON.parse(table);
-        const newState = window.movePiece({table, pieces, piece, newCoords});
-        table = JSON.stringify(newState.table);
-        pieces = JSON.stringify(newState.pieces);
-        localStorage.removeItem(table);
-        localStorage.setItem('table', table);
-        localStorage.removeItem(pieces);
-        localStorage.setItem('pieces', pieces);
-        window.renderTable(newState.table);
-    }
-    
+        const piece = game['users'][userColor]['pieces'][pieceName];
+        table = game['table'];
+        const pieceCopy = JSON.parse(JSON.stringify(piece));
+        const options = {
+            originCoords: pieceCopy.originCoords,
+            currCoords: pieceCopy.currentCoords,
+            destCoords: cellCoords,
+            limit: pieceCopy.limitCells,
+            moves: pieceCopy.moves,
+        }
+        const isValidMove = checkMoves(options);
+       
+        if(cellCoords !== pieceCopy.currCoords && isValidMove) {
+            
+            const orgX = pieceCopy.currentCoords[0];
+            const orgY = pieceCopy.currentCoords[1];
+            const desX = cellCoords[0];
+            const desY = cellCoords[1];
 
-    // const draggableElement = document.getElementById(id);
-    // const dropzone = event.target;
-    
-    // dropzone.appendChild(draggableElement);
+            if (!piece) return;
+           
+            // update piece in pieces with new current coords
+            game['users'][userColor]['pieces'][pieceName]['currentCoords'] = [desX, desY];
 
-    // event
-    // .dataTransfer
-    // .clearData();
+            if (!table) return;
+
+            // update table new coords cell with state the updated piece
+            game['table'][desX][desY]['state'] = piece;
+           
+
+            // update table old coords cell with state empty
+            game['table'][orgX][orgY]['state'] = 'empty';
+
+        } else {
+
+        }
+
+        gameRef.update(game);
+    });   
 };
+    
+
