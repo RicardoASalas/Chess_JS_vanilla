@@ -54,13 +54,14 @@ const actions = {
             const piece = whitePieces[property];
             table.setCellState(piece, coords)
         }
+
+        return table;
     },
 }
 
 /* renders table html code due to a tableState */
 window.renderTable = (tableState) => {
     const userColor = JSON.parse(localStorage.getItem('userColor'));
-    console.log('renderizando')
     let image;
     let cells = '';
     let pieceImage;
@@ -114,26 +115,9 @@ window.renderTable = (tableState) => {
     document.getElementById('chessTable').innerHTML = htmlCode;
 };
 
-/* changes state of table and piece */
-window.movePiece = (options) => {
-    const { table, pieces, piece, newCoords } = options;
-    const oldX = piece.currentCoords[0];
-    const oldY = piece.currentCoords[1];
-    const newX = newCoords[0];
-    const newY = newCoords[1];
-    const color = piece.color;
-    const numPiece = piece.numPiece
-    // update piece in pieces with new current coords
-    pieces[color][numPiece]['currentCoords'] = newCoords;
-    // update table new coords cell with state the updated piece
-    table[newX][newY]['state'] = pieces[color][numPiece];
-    // update table old coords cell with state empty
-    table[oldX][oldY]['state'] = 'empty';
 
-    return { table, pieces };
-};
-
-/* check correct moves for every piece type */
+/* check correct moves for every piece type.
+returns boolean */
 window.checkMoves = (options) => {
     const { originCoords, currCoords, destCoords, limit, moves } = options;
     const orgX = originCoords[0];
@@ -150,45 +134,45 @@ window.checkMoves = (options) => {
 
     switch (moves) {
         case '+': 
-            if (destX !== currX && destY !== currY ) return currCoords;
+            if (destX !== currX && destY !== currY ) return false;
     
-            if (straigthDist > limit) return currCoords;
+            if (straigthDist > limit) return false;
     
-            return destCoords;
+            return true;
        
         case '*':
             if (destX !== currX && destY !== currY) {  
-                if (diagonalDist > limit) return currCoords;
+                if (diagonalDist > limit) return false;
 
-                if (yDif/xDif !== 1 && yDif/xDif !== -1) return currCoords
+                if (yDif/xDif !== 1 && yDif/xDif !== -1) return false;
             } else if (destX === currX || destY === currY) {
-                if (straigthDist > limit) return currCoords;
+                if (straigthDist > limit) return false;
             } 
     
-            return destCoords;
+            return true;
 
         case '|':
-            if (destX !== currX) return currCoords
+            if (destX !== currX && destY === currY ) return false;
 
-            if (straigthDist > limit) return currCoords;
+            if (straigthDist > limit || diagonalDist > limit) return false;
       
-            if(orgY === 6 && currY < destY) return currCoords;
+            if(orgY === 6 && currY < destY) return false;
             
-            if(orgY === 1 && currY > destY) return currCoords;
+            if(orgY === 1 && currY > destY) return false;
     
-            return destCoords;
+            return true;
 
         case 'x':
-            if (destX === currX || destY === currY) return currCoords;
+            if (destX === currX || destY === currY) return false;
 
-            if (diagonalDist > limit) return currCoords;
+            if (diagonalDist > limit) return false;
 
-            if (yDif/xDif !== 1 && yDif/xDif !== -1) return currCoords
+            if (yDif/xDif !== 1 && yDif/xDif !== -1) return false;
 
-            return destCoords;
+            return true;
 
         case 'L':
-            if (destX === currX || destY === currY) return currCoords;
+            if (destX === currX || destY === currY) return false;
           
             if (
                 yDif/xDif !== 2
@@ -198,9 +182,9 @@ window.checkMoves = (options) => {
                 yDif/xDif !== 0.5
                 &&
                 yDif/xDif !== -0.5
-                ) return currCoords
+                ) return false;
     
-            return destCoords;
+            return true;
     }
 };
 
