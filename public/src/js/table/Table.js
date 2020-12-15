@@ -15,7 +15,7 @@ class Table {
             for (let y = 0; y < this.#verticalCells; y++) {
                 const color = (y + x ) % 2 ? 'black' : 'white';
                 const cell = {
-                    state: 'empy',
+                    state: 'empty',
                     color,
                     coords: [x,y]
                 }
