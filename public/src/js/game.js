@@ -5,68 +5,97 @@ const startGame = () => {
     const database = firebase.database();
     let gameName = document.getElementById("gameName").value;
     let userName = document.getElementById("userName").value;
-    const whiteChecked = document.getElementById("whiteCheckBox").checked;
-    const blackChecked = document.getElementById("blackCheckBox").checked;
-    gameName = gameName.replace(' ', '');
-    userName = userName.replace(' ', '');
+    const whiteCheckBox = document.getElementById("whiteCheckBox");
+    const blackCheckBox = document.getElementById("blackCheckBox");
+    gameName = gameName.replace(' ', '').toLowerCase();
+    userName = userName.replace(' ', '').toLowerCase();
+    console.log(gameName)
+    console.log(userName)
+    let userColor;
+    let oponentColor;
 
     if (!gameName && !userName)  {
       alert('ERROR: Introduce un nombre de usuario y de juego')
       return;
     }
 
-    if ((whiteChecked && blackChecked) || (!whiteChecked && !blackChecked))  {
+    if 
+    ((whiteCheckBox.checked && blackCheckBox.checked) ||
+     (!whiteCheckBox.checked && !blackCheckBox.checked))  {
       alert('ERROR: Selecciona un color.')
       return;
     }
 
-    const userColor = whiteChecked ? 'white' : 'black';
+    if (whiteCheckBox.checked) {
+      userColor = whiteCheckBox.value;
+      oponentColor = blackCheckBox.value;
+    } else if (blackCheckBox.checked) {
+      userColor = blackCheckBox.value;
+      oponentColor = whiteCheckBox.value;
+    }
+    
     const gameRef = database.ref(`/games/${gameName}/`)
 
     gameRef.once('value').then((snapshot) => {
         const game = snapshot.val() ? snapshot.val() : {};
+        let isNewGame = false;
 
-        if (!game.users) game.users = {};
-
-
-        if (!game.users[userColor]){
-            game.users[userColor] = {};
-            game.users[userColor].username = userName;
-        } 
-
-        if (game.users[userColor].username !== userName) {
-            alert('ERROR: No puedes unirte a este juego, está completo.')
-            return;
+        if (!game.users) {
+          game['users'] = {};
+          isNewGame = true;
         }
 
-        let pieces = {};
-        const colorPlayer2 =  whiteChecked ? 'black' : 'white';
-        
-        if (!game.users[userColor].pieces) game.users[userColor].pieces = actions.createPieces(userColor);
-
-        if (game.users[colorPlayer2] && game.users[colorPlayer2].pieces) {
-            pieces[colorPlayer2] = game.users[colorPlayer2].pieces;
+        if (!game['users'][userColor]){
+          game['users'][userColor] = {};
+          game['users'][userColor]['pieces'] = actions.createPieces(userColor);
+          game.users[userColor]['username'] = userName;
         } 
-        
-        pieces[userColor] = game.users[userColor].pieces;
-        
-        console.log('Empieza el juego');
-        const table = new Table();
-        table.create();
-        actions.setPieces(table, pieces);
-        game.table = table.getTableState();
-     
-        localStorage.setItem('userName', JSON.stringify(userName));
-        localStorage.setItem('gameName', JSON.stringify(gameName));
-        localStorage.setItem('userColor', JSON.stringify(userColor))
 
-        gameRef.set(game);
+        if (game['users'][userColor]['username'] !== userName) {
+            alert('ERROR: No puedes unirte a este juego, está completo.')
+            return;
+        } else {
+            let pieces = {};
+
+            pieces[userColor] = game['users'][userColor]['pieces'];
+
+            if (game['users'][oponentColor]) {
+                pieces[oponentColor] = game['users'][oponentColor]['pieces'];
+            } 
+
+            console.log(pieces)
+            
+            const table = new Table();
+            table.create();
+            actions.setPieces(table, pieces);
+            game['table'] = table.getTableState();
+
+            localStorage.setItem('userName', JSON.stringify(userName));
+            localStorage.setItem('gameName', JSON.stringify(gameName));
+            localStorage.setItem('userColor', JSON.stringify(userColor))
+
+            isNewGame ? gameRef.set(game) : gameRef.update(game);
+
+            gameRef.on('value', (snapshot) =>{
+              const game = snapshot.val();
+              console.log(game)
+      
+              if (game && game.table) {
+                  const changedTable = game.table;
+    
+                  if (changedTable) window.renderTable(changedTable)
+              }
+            });
+        }
     });
+}
 
-    gameRef.child('table').on('value', (snapshot) =>{
-        const table = snapshot.val();
-        if (table) window.renderTable(table);
-      });
-}   
+const finishGame = () => {
+  const database = firebase.database();
+  console.log('terminando...')
+  const gameName =JSON.parse(localStorage.getItem('gameName'));
+  const gameRef = database.ref(`/games/${gameName}/`);
+  gameRef.remove();
+}
 
-export { startGame };
+export { startGame, finishGame };
